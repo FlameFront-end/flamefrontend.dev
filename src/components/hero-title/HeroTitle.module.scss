@@ -1,0 +1,116 @@
+.title {
+  /* Driven by motion springs (written to this element); .reveal inherits them. */
+  --hero-x: 50%;
+  --hero-y: 50%;
+  --hero-reveal-core: #ffffff;
+  --hero-reveal-hot: #ffffff;
+  --hero-reveal-start: #ffffff;
+  --hero-reveal-mid: #6f93ff;
+  --hero-reveal-end: #d7ccff;
+  --hero-reveal-shadow: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  --hero-accent-start: #dfe8ff;
+  --hero-accent-mid: var(--color-accent);
+  --hero-accent-end: #c7b7ff;
+
+  position: relative;
+  display: grid;
+  width: min(100%, 60rem);
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 4.625rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: var(--tracking-tighter);
+  cursor: default;
+}
+
+/* Base and reveal layers share the same grid cell so the glyphs line up. */
+.layer,
+.reveal {
+  position: relative;
+  display: grid;
+  grid-area: 1 / 1;
+  gap: 0.08em;
+  width: 100%;
+}
+
+.layer > span,
+.reveal > span {
+  display: block;
+}
+
+.line {
+  white-space: nowrap;
+}
+
+.accent {
+  background-image: linear-gradient(
+    110deg,
+    var(--hero-accent-start) 0%,
+    var(--hero-accent-mid) 46%,
+    var(--hero-accent-end) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* The reveal layer: a vivid gradient, shown only inside a soft spotlight that
+   tracks the cursor. Hidden until hover, then fades in. */
+.reveal {
+  color: transparent;
+  background-image:
+    radial-gradient(
+      circle at var(--hero-x) var(--hero-y),
+      var(--hero-reveal-core) 0%,
+      var(--hero-reveal-hot) 18%,
+      transparent 42%
+    ),
+    linear-gradient(
+      110deg,
+      var(--hero-reveal-start) 0%,
+      var(--hero-reveal-mid) 48%,
+      var(--color-accent-strong) 70%,
+      var(--hero-reveal-end) 100%
+    );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  filter: drop-shadow(0 0 18px var(--hero-reveal-shadow));
+  transition: opacity var(--duration-base) var(--ease-standard);
+  pointer-events: none;
+
+  mask-image: radial-gradient(30rem 30rem at var(--hero-x) var(--hero-y), #000 0%, #000 28%, transparent 64%);
+  -webkit-mask-image: radial-gradient(
+    30rem 30rem at var(--hero-x) var(--hero-y),
+    #000 0%,
+    #000 28%,
+    transparent 64%
+  );
+}
+
+.title:hover .reveal {
+  opacity: 1;
+}
+
+:global([data-theme="light"]) .title {
+  --hero-reveal-core: #111827;
+  --hero-reveal-hot: #1d4ed8;
+  --hero-reveal-start: #0f172a;
+  --hero-reveal-mid: #2563eb;
+  --hero-reveal-end: #5b21b6;
+  --hero-reveal-shadow: color-mix(in srgb, #2563eb 16%, transparent);
+  --hero-accent-start: #1e3a8a;
+  --hero-accent-mid: #2563eb;
+  --hero-accent-end: #6d28d9;
+}
+
+@media (max-width: 640px) {
+  .line {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+}

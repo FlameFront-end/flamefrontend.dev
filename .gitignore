@@ -11,3 +11,4 @@ yarn-error.log*
 
 steps/
 AGENTS.md
+.playwright-mcp

@@ -26,7 +26,6 @@ export function CaseStudyPage(): React.ReactElement {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Case study</p>
         <h1 className={styles.title}>{caseStudy.title}</h1>
         <p className={styles.lead}>{caseStudy.subtitle}</p>
         <div className={styles.actions}>
@@ -45,7 +44,6 @@ export function CaseStudyPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Context"
           title="An internal real-time layer had become product infrastructure"
           description="The application already had production SSE behavior, but it lived as custom app code with connection management, tab coordination and diagnostics mixed into product concerns."
         />
@@ -53,7 +51,7 @@ export function CaseStudyPage(): React.ReactElement {
 
       <section className={styles.comparisonGrid}>
         <Card className={styles.storyCard}>
-          <SectionHeader eyebrow="Before" title="Application-owned infrastructure" />
+          <SectionHeader title="Application-owned infrastructure" />
           <ul className={styles.list}>
             {caseStudy.before.map((item) => (
               <li key={item}>{item}</li>
@@ -62,7 +60,7 @@ export function CaseStudyPage(): React.ReactElement {
         </Card>
 
         <Card className={styles.storyCard}>
-          <SectionHeader eyebrow="Extraction" title="Runtime boundaries pulled out" />
+          <SectionHeader title="Runtime boundaries pulled out" />
           <ol className={styles.orderedList}>
             {extractionSteps.map((step) => (
               <li key={step}>{step}</li>
@@ -71,7 +69,7 @@ export function CaseStudyPage(): React.ReactElement {
         </Card>
 
         <Card className={styles.storyCard}>
-          <SectionHeader eyebrow="After" title="Thin app layer over a tested runtime" />
+          <SectionHeader title="Thin app layer over a tested runtime" />
           <ul className={styles.list}>
             {caseStudy.after.map((item) => (
               <li key={item}>{item}</li>
@@ -82,7 +80,6 @@ export function CaseStudyPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Results"
           title="Measured code removal and package extraction"
           description="The result is not a decorative rewrite. It is a smaller application integration backed by a reusable package set."
         />
@@ -108,7 +105,6 @@ export function CaseStudyPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="What improved"
           title="The application kept domain logic and dropped reusable runtime work"
         />
         <div className={styles.improvementGrid}>

@@ -14,7 +14,6 @@ export function ArticlesPage(): React.ReactElement {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Articles</p>
         <h1 className={styles.title}>Technical writing coming soon.</h1>
         <p className={styles.lead}>
           Future notes will focus on production React infrastructure, real-time UI and browser
@@ -24,7 +23,6 @@ export function ArticlesPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Planned"
           title="Writing backlog"
           description="No fake blog archive yet. These are the topics planned for the first technical articles."
         />
@@ -42,7 +40,6 @@ export function ArticlesPage(): React.ReactElement {
 
       <section className={styles.contact}>
         <SectionHeader
-          eyebrow="Meanwhile"
           title="Read the production migration case study"
           description="The current long-form engineering story is the sse-runtime extraction case study."
         />

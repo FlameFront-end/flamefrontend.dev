@@ -28,11 +28,10 @@ export const contactLinks: readonly ExternalLink[] = [
   },
   {
     label: 'Telegram',
-    href: 'https://t.me/',
+    href: 'https://t.me/Artem_Kaliganov',
   },
   {
     label: 'Email',
-    href: 'mailto:hello@flamefrontend.dev',
+    href: 'mailto:flame.kaliganov@gmail.com',
   },
 ];
-

@@ -56,7 +56,6 @@ export function ToolDetailsPage(): React.ReactElement {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Flagship tool</p>
         <h1 className={styles.title}>sse-runtime</h1>
         <p className={styles.lead}>
           TypeScript SSE runtime for production React applications with typed events, reconnect,
@@ -74,10 +73,7 @@ export function ToolDetailsPage(): React.ReactElement {
 
       <section className={styles.twoColumn}>
         <Card className={styles.textCard}>
-          <SectionHeader
-            eyebrow="Problem"
-            title="Native EventSource is not enough for production React apps"
-          />
+          <SectionHeader title="Native EventSource is not enough for production React apps" />
           <ul className={styles.list}>
             {eventSourceProblems.map((problem) => (
               <li key={problem}>{problem}</li>
@@ -86,10 +82,7 @@ export function ToolDetailsPage(): React.ReactElement {
         </Card>
 
         <Card className={styles.textCard}>
-          <SectionHeader
-            eyebrow="Solution"
-            title="A TypeScript runtime for SSE infrastructure"
-          />
+          <SectionHeader title="A TypeScript runtime for SSE infrastructure" />
           <p>
             sse-runtime extracts connection lifecycle, diagnostics and React integration into a
             tested package set.
@@ -104,7 +97,6 @@ export function ToolDetailsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Packages"
           title="Core, React integration and DevTools"
           description="Use the framework-agnostic runtime directly or mount the React provider and hooks in an application."
         />
@@ -117,7 +109,6 @@ export function ToolDetailsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Features"
           title="Built around production SSE requirements"
           description="The feature set focuses on connection correctness, tab coordination and runtime diagnostics."
         />
@@ -126,7 +117,6 @@ export function ToolDetailsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Quick start"
           title="Install the React package and subscribe to typed events"
           description="The snippet is intentionally compact and shows the shape of provider setup and event subscription."
         />
@@ -135,7 +125,6 @@ export function ToolDetailsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="DevTools"
           title="Diagnostics instead of custom logging widgets"
           description="The DevTools package is designed as a floating panel for runtime status, connection state and event diagnostics."
         />
@@ -152,7 +141,7 @@ export function ToolDetailsPage(): React.ReactElement {
       </section>
 
       <section className={styles.section}>
-        <SectionHeader eyebrow="Links" title="Source and packages" />
+        <SectionHeader title="Source and packages" />
         <div className={styles.links}>
           {links.map((link, index) => (
             <LinkButton

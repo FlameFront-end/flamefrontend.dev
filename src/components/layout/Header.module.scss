@@ -60,6 +60,17 @@
 }
 
 .menuButton {
+  --menu-button-hover-background: color-mix(
+    in srgb,
+    var(--color-surface-raised) 90%,
+    var(--color-text-primary) 10%
+  );
+  --menu-button-hover-border: color-mix(
+    in srgb,
+    var(--color-border-strong) 86%,
+    var(--color-text-primary) 14%
+  );
+
   display: none;
   width: 2.5rem;
   height: 2.5rem;
@@ -69,6 +80,15 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.menuButton:hover {
+  background: var(--menu-button-hover-background);
+  border-color: var(--menu-button-hover-border);
 }
 
 .menuLine {
@@ -130,4 +150,3 @@
     display: none;
   }
 }
-

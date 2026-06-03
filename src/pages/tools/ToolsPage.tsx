@@ -9,7 +9,6 @@ export function ToolsPage(): React.ReactElement {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Open source</p>
         <h1 className={styles.title}>Tools</h1>
         <p className={styles.lead}>
           A focused catalog of TypeScript runtime tools for real-time UI, frontend infrastructure
@@ -19,7 +18,6 @@ export function ToolsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="Available now"
           title="Flagship runtime"
           description="The main open-source package set is production-oriented and split across core, React and DevTools packages."
         />
@@ -28,7 +26,6 @@ export function ToolsPage(): React.ReactElement {
 
       <section className={styles.section}>
         <SectionHeader
-          eyebrow="In progress"
           title="Future runtime tools"
           description="These ideas are planned or being shaped. They are not presented as completed packages."
         />

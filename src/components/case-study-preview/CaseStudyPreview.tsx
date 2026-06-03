@@ -10,7 +10,6 @@ type CaseStudyPreviewProps = {
 export function CaseStudyPreview({ caseStudy }: CaseStudyPreviewProps): React.ReactElement {
   return (
     <Card className={styles.card}>
-      <p className={styles.eyebrow}>Production case study</p>
       <h3 className={styles.title}>{caseStudy.title}</h3>
       <p className={styles.subtitle}>{caseStudy.subtitle}</p>
       <LinkButton href={`/case-studies/${caseStudy.slug}`} variant="secondary">

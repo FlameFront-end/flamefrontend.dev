@@ -1,28 +1,54 @@
 .linkButton {
+  --button-primary-hover-background: color-mix(
+    in srgb,
+    var(--color-text-primary) 86%,
+    var(--color-background) 14%
+  );
+  --button-primary-hover-border: var(--button-primary-hover-background);
+  --button-primary-hover-color: var(--color-background);
+  --button-secondary-hover-background: color-mix(
+    in srgb,
+    var(--color-surface-raised) 90%,
+    var(--color-text-primary) 10%
+  );
+  --button-secondary-hover-border: color-mix(
+    in srgb,
+    var(--color-border-strong) 86%,
+    var(--color-text-primary) 14%
+  );
+  --button-ghost-hover-background: color-mix(
+    in srgb,
+    var(--color-surface-muted) 90%,
+    var(--color-text-primary) 10%
+  );
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
   min-height: 2.75rem;
   padding: 0 var(--space-5);
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 500;
   line-height: var(--line-height-tight);
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
-
-.linkButton:hover {
-  transform: translateY(-1px);
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .primary {
   color: var(--color-background);
   background: var(--color-text-primary);
   border-color: var(--color-text-primary);
+}
+
+.primary:hover {
+  color: var(--button-primary-hover-color);
+  background: var(--button-primary-hover-background);
+  border-color: var(--button-primary-hover-border);
 }
 
 .secondary {
@@ -32,7 +58,8 @@
 }
 
 .secondary:hover {
-  border-color: var(--color-border-strong);
+  background: var(--button-secondary-hover-background);
+  border-color: var(--button-secondary-hover-border);
 }
 
 .ghost {
@@ -42,6 +69,5 @@
 
 .ghost:hover {
   color: var(--color-text-primary);
-  background: var(--color-surface-muted);
+  background: var(--button-ghost-hover-background);
 }
-

@@ -1,4 +1,15 @@
 .toggle {
+  --theme-toggle-hover-background: color-mix(
+    in srgb,
+    var(--color-surface-raised) 90%,
+    var(--color-text-primary) 10%
+  );
+  --theme-toggle-hover-border: color-mix(
+    in srgb,
+    var(--color-border-strong) 86%,
+    var(--color-text-primary) 14%
+  );
+
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -15,8 +26,8 @@
 }
 
 .toggle:hover {
-  background: var(--color-surface-raised);
-  border-color: var(--color-border-strong);
+  background: var(--theme-toggle-hover-background);
+  border-color: var(--theme-toggle-hover-border);
 }
 
 .indicator {
@@ -36,4 +47,3 @@
     display: none;
   }
 }
-

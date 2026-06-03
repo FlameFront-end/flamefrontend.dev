@@ -1,29 +1,21 @@
 .header {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
   max-width: var(--container-narrow-width);
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--color-accent);
-  font-size: var(--font-size-caption);
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.05;
-  letter-spacing: 0;
+  font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-tighter);
 }
 
 .description {
   margin: 0;
+  max-width: 44rem;
   color: var(--color-text-secondary);
   font-size: var(--font-size-lead);
-  line-height: var(--line-height-lead);
+  line-height: 1.6;
 }
-

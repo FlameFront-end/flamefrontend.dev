@@ -27,7 +27,6 @@ export function AboutPage(): React.ReactElement {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>About</p>
         <h1 className={styles.title}>Frontend infrastructure and developer tooling.</h1>
         <p className={styles.lead}>
           Frontend developer focused on React, TypeScript, real-time interfaces, frontend
@@ -46,7 +45,6 @@ export function AboutPage(): React.ReactElement {
       <section className={styles.grid}>
         <Card className={styles.card}>
           <SectionHeader
-            eyebrow="Focus"
             title="Production React architecture"
             description="The work is centered on infrastructure that makes React applications easier to operate, debug and evolve."
           />
@@ -55,7 +53,6 @@ export function AboutPage(): React.ReactElement {
 
         <Card className={styles.card}>
           <SectionHeader
-            eyebrow="Experience"
             title="Commercial product contexts"
             description="Experience spans business applications and product surfaces where correctness, maintainability and delivery speed matter."
           />
