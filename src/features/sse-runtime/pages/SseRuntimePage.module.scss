@@ -162,109 +162,6 @@
   min-width: 0;
 }
 
-.sidebar {
-  position: sticky;
-  top: var(--space-5);
-  align-self: start;
-  min-width: 0;
-  scroll-margin-top: var(--space-6);
-}
-
-.sidebarInner {
-  display: grid;
-  gap: var(--space-5);
-  padding: var(--space-4);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-raised) 54%, transparent),
-      transparent 82%
-    ),
-    var(--color-background-soft);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: 0 18px 58px -52px rgb(0 0 0 / 86%);
-}
-
-.sidebarHeader {
-  display: grid;
-  gap: var(--space-1);
-  padding: 0 0 var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.sidebarHeader span {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.sidebarHeader strong {
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.sidebarNav {
-  display: grid;
-  gap: var(--space-5);
-}
-
-.sidebarGroup {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.sidebarGroup h2 {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin: 0;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.sidebarGroup h2 svg {
-  width: 0.9375rem;
-  height: 0.9375rem;
-  color: var(--color-text-secondary);
-  stroke-width: 1.8;
-}
-
-.sidebarLinkList {
-  display: grid;
-  gap: var(--space-1);
-}
-
-.sidebarLink {
-  display: block;
-  min-width: 0;
-  padding: var(--space-2) var(--space-3);
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-  border-radius: var(--radius-sm);
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
-
-.sidebarLink:hover {
-  color: var(--color-text-primary);
-  background: color-mix(in srgb, var(--color-surface-raised) 78%, transparent);
-  transform: translateX(2px);
-}
-
 .metricsSection {
   display: grid;
   grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
@@ -367,142 +264,12 @@
   list-style: none;
 }
 
-.runtimeStep {
-  counter-increment: runtime-step;
-  position: relative;
-  display: grid;
-  align-content: start;
-  gap: var(--space-4);
-  min-height: 14rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  overflow: hidden;
-  background: var(--color-background-soft);
-  isolation: isolate;
-}
-
-.runtimeStep::before {
-  position: absolute;
-  inset: auto var(--space-5) var(--space-5) auto;
-  z-index: 0;
-  color: color-mix(in srgb, var(--color-text-primary) 7%, transparent);
-  font-family: var(--font-mono);
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 0.8;
-  content: counter(runtime-step, decimal-leading-zero);
-}
-
-.stepIcon,
-.problemIcon {
-  position: relative;
-  z-index: 1;
-  display: inline-grid;
-  place-items: center;
-  width: 2.375rem;
-  height: 2.375rem;
-  color: var(--color-text-secondary);
-  background: color-mix(in srgb, var(--color-surface-raised) 72%, transparent);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-.stepIcon svg,
-.problemIcon svg {
-  width: 1rem;
-  height: 1rem;
-  stroke-width: 1.8;
-}
-
-.runtimeStep div:last-child,
-.problemRow div:last-child {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: var(--space-3);
-}
-
-.runtimeStep h3,
-.problemRow h3 {
-  margin: 0;
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.35;
-}
-
-.runtimeStep p,
-.problemRow p,
-.packageCard p {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
 .problemList {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.problemRow {
-  display: grid;
-  align-content: start;
-  gap: var(--space-4);
-  min-height: 13rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-raised) 52%, transparent),
-      transparent 76%
-    ),
-    var(--color-background-soft);
-}
-
-.problemIcon {
-  color: color-mix(in srgb, #ff7b72 78%, var(--color-text-secondary));
-}
-
 .packageGrid {
   grid-template-columns: 1fr;
-}
-
-.packageCard {
-  display: grid;
-  grid-template-columns: minmax(13rem, 0.32fr) minmax(0, 1fr) auto;
-  gap: var(--space-5);
-  align-items: center;
-  min-height: 7rem;
-  padding: clamp(var(--space-4), 2.2vw, var(--space-6));
-  background: var(--color-background-soft);
-  transition: background-color var(--duration-fast) var(--ease-standard);
-  scroll-margin-top: var(--space-8);
-}
-
-.packageCard:hover {
-  background: color-mix(in srgb, var(--color-surface-raised) 76%, var(--color-background-soft));
-}
-
-.packageCard div {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.packageCard span {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.packageCard code {
-  color: var(--color-text-primary);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1024px) {
@@ -515,22 +282,12 @@
     padding-block: clamp(2.75rem, 6vw, 4rem) var(--space-4);
   }
 
-  .metricsSection,
-  .packageCard {
+  .metricsSection {
     grid-template-columns: 1fr;
   }
 
   .documentationShell {
     grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: static;
-  }
-
-  .sidebarNav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-4);
   }
 
   .metricStrip,
@@ -645,20 +402,9 @@
     line-height: 1.55;
   }
 
-  .metric,
-  .runtimeStep,
-  .problemRow,
-  .packageCard {
+  .metric {
     min-height: auto;
     padding: var(--space-5);
-  }
-
-  .packageCard {
-    gap: var(--space-4);
-  }
-
-  .sidebarNav {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -682,14 +428,7 @@
     background-size: 1.75rem 1.75rem;
   }
 
-  .metric,
-  .runtimeStep,
-  .problemRow,
-  .packageCard {
-    padding: var(--space-4);
-  }
-
-  .sidebarInner {
+  .metric {
     padding: var(--space-4);
   }
 }

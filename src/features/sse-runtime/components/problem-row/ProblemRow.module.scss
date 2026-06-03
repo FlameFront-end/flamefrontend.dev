@@ -1,0 +1,69 @@
+.row {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-height: 13rem;
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 52%, transparent),
+      transparent 76%
+    ),
+    var(--color-background-soft);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  color: color-mix(in srgb, #ff7b72 78%, var(--color-text-secondary));
+  background: color-mix(in srgb, var(--color-surface-raised) 72%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.icon svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 1.8;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.copy h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.copy p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .row {
+    min-height: auto;
+    padding: var(--space-5);
+  }
+}
+
+@media (max-width: 430px) {
+  .row {
+    padding: var(--space-4);
+  }
+}

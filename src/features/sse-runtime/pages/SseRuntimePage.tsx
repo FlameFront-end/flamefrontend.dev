@@ -1,90 +1,22 @@
-import {
-  Activity,
-  ArrowRight,
-  BookOpen,
-  Braces,
-  Cable,
-  ExternalLink,
-  FlaskConical,
-  FolderOpen,
-  GitBranch,
-  LockKeyhole,
-  Radio,
-  RotateCcw,
-  type LucideIcon,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { TbBrandGithub } from 'react-icons/tb';
-import { Link } from 'react-router-dom';
 
+import { RuntimeSidebar } from '@/features/sse-runtime/components/documentation-sidebar/RuntimeSidebar';
+import { ProblemRow } from '@/features/sse-runtime/components/problem-row/ProblemRow';
 import { RuntimePreview } from '@/features/sse-runtime/components/runtime-preview/RuntimePreview';
+import { RuntimePackageCard } from '@/features/sse-runtime/components/runtime-package-card/RuntimePackageCard';
+import { RuntimeStep } from '@/features/sse-runtime/components/runtime-step/RuntimeStep';
 import { SSE_RUNTIME_GITHUB_URL } from '@/features/sse-runtime/model/links';
+import {
+  eventSourceLimits,
+  runtimeLanes,
+  runtimeOverviewStats,
+} from '@/features/sse-runtime/model/runtimeContent';
 import { sseRuntime } from '@/features/sse-runtime/model/tools';
-import type { PackageLink } from '@/features/sse-runtime/model/types';
-import { ROUTES } from '@/shared/config/routes';
 import { LinkButton } from '@/shared/kit/link-button/LinkButton';
 import { Page } from '@/shared/kit/page-layout/PageLayout';
 
 import styles from './SseRuntimePage.module.scss';
-
-const overviewStats = [
-  {
-    value: '3',
-    label: 'published npm packages',
-  },
-  {
-    value: '0',
-    label: 'runtime dependencies in core',
-  },
-  {
-    value: '229',
-    label: 'unit tests in the library repo',
-  },
-  {
-    value: '~3.5k',
-    label: 'application lines removed in migration',
-  },
-] as const;
-
-const runtimeLanes = [
-  {
-    title: 'Connection',
-    description: 'fetch stream, parser, heartbeat watchdog',
-    Icon: Cable,
-  },
-  {
-    title: 'Recovery',
-    description: 'retry policy, backoff, Last-Event-ID resume',
-    Icon: RotateCcw,
-  },
-  {
-    title: 'Ownership',
-    description: 'Web Locks leader with BroadcastChannel fan-out',
-    Icon: GitBranch,
-  },
-  {
-    title: 'Diagnostics',
-    description: 'typed hooks, event log, floating DevTools panel',
-    Icon: Activity,
-  },
-] as const;
-
-const eventSourceLimits = [
-  {
-    title: 'Headers are locked out',
-    description: 'Native EventSource cannot send bearer tokens or refresh auth at connection time.',
-    Icon: LockKeyhole,
-  },
-  {
-    title: 'Payloads stay untyped',
-    description: 'Every handler owns parsing, validation and mismatched event names locally.',
-    Icon: Braces,
-  },
-  {
-    title: 'Reconnects are opaque',
-    description: 'Retry timing, stale streams and resume behavior are hard to control consistently.',
-    Icon: Radio,
-  },
-] as const;
 
 export function SseRuntimePage(): React.ReactElement {
   const packages = sseRuntime.packages ?? [];
@@ -137,7 +69,7 @@ export function SseRuntimePage(): React.ReactElement {
             </div>
 
             <div className={styles.metricStrip} aria-label="sse-runtime project metrics">
-              {overviewStats.map((stat) => (
+              {runtimeOverviewStats.map((stat) => (
                 <div className={styles.metric} key={stat.label}>
                   <strong>{stat.value}</strong>
                   <span>{stat.label}</span>
@@ -191,11 +123,7 @@ export function SseRuntimePage(): React.ReactElement {
 
             <div className={styles.packageGrid}>
               {packages.map((packageLink) => (
-                <RuntimePackageCard
-                  id={getPackageAnchorId(packageLink.name)}
-                  key={packageLink.name}
-                  packageLink={packageLink}
-                />
+                <RuntimePackageCard key={packageLink.name} packageLink={packageLink} />
               ))}
             </div>
           </section>
@@ -203,149 +131,4 @@ export function SseRuntimePage(): React.ReactElement {
       </div>
     </Page>
   );
-}
-
-type RuntimeSidebarProps = {
-  readonly packages: readonly PackageLink[];
-};
-
-function RuntimeSidebar({ packages }: RuntimeSidebarProps): React.ReactElement {
-  return (
-    <aside className={styles.sidebar} id="runtime-navigation" aria-label="sse-runtime navigation">
-      <div className={styles.sidebarInner}>
-        <div className={styles.sidebarHeader}>
-          <span>sse-runtime</span>
-          <strong>Navigation</strong>
-        </div>
-
-        <nav className={styles.sidebarNav}>
-          <SidebarGroup Icon={BookOpen} title="Documentation">
-            {packages.map((packageLink) => (
-              <SidebarLink
-                href={`#${getPackageAnchorId(packageLink.name)}`}
-                key={packageLink.name}
-                label={getPackageNavigationTitle(packageLink.name)}
-              />
-            ))}
-          </SidebarGroup>
-
-          <SidebarGroup Icon={FolderOpen} title="Migration">
-            <SidebarLink href={ROUTES.SSE_RUNTIME_CASE_STUDY} label="Production migration" />
-          </SidebarGroup>
-
-          <SidebarGroup Icon={FlaskConical} title="Demos">
-            <SidebarLink href="#runtime-preview" label="React chat demo" />
-          </SidebarGroup>
-        </nav>
-      </div>
-    </aside>
-  );
-}
-
-type SidebarGroupProps = {
-  readonly children: React.ReactNode;
-  readonly Icon: LucideIcon;
-  readonly title: string;
-};
-
-function SidebarGroup({ children, Icon, title }: SidebarGroupProps): React.ReactElement {
-  return (
-    <section className={styles.sidebarGroup} aria-labelledby={`${getSidebarGroupId(title)}-title`}>
-      <h2 id={`${getSidebarGroupId(title)}-title`}>
-        <Icon aria-hidden="true" />
-        <span>{title}</span>
-      </h2>
-      <div className={styles.sidebarLinkList}>{children}</div>
-    </section>
-  );
-}
-
-type SidebarLinkProps = {
-  readonly href: string;
-  readonly label: string;
-};
-
-function SidebarLink({ href, label }: SidebarLinkProps): React.ReactElement {
-  if (href.startsWith('#')) {
-    return (
-      <a className={styles.sidebarLink} href={href}>
-        {label}
-      </a>
-    );
-  }
-
-  return (
-    <Link className={styles.sidebarLink} to={href}>
-      {label}
-    </Link>
-  );
-}
-
-type IconCardProps = {
-  readonly description: string;
-  readonly Icon: LucideIcon;
-  readonly title: string;
-};
-
-function RuntimeStep({ description, Icon, title }: IconCardProps): React.ReactElement {
-  return (
-    <li className={styles.runtimeStep}>
-      <div className={styles.stepIcon}>
-        <Icon aria-hidden="true" />
-      </div>
-      <div>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </li>
-  );
-}
-
-function ProblemRow({ description, Icon, title }: IconCardProps): React.ReactElement {
-  return (
-    <article className={styles.problemRow}>
-      <div className={styles.problemIcon}>
-        <Icon aria-hidden="true" />
-      </div>
-      <div>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </article>
-  );
-}
-
-type RuntimePackageCardProps = {
-  readonly id: string;
-  readonly packageLink: PackageLink;
-};
-
-function RuntimePackageCard({ id, packageLink }: RuntimePackageCardProps): React.ReactElement {
-  return (
-    <article className={styles.packageCard} id={id}>
-      <div>
-        <span>{packageLink.label}</span>
-        <code>{packageLink.name}</code>
-      </div>
-      <p>{packageLink.purpose}</p>
-      <LinkButton href={packageLink.href} variant="ghost">
-        npm
-        <ExternalLink aria-hidden="true" />
-      </LinkButton>
-    </article>
-  );
-}
-
-function getPackageAnchorId(packageName: string): string {
-  const shortName = packageName.replace('@flamefrontend/sse-runtime-', '');
-
-  return `package-${shortName}`;
-}
-
-function getPackageNavigationTitle(packageName: string): string {
-  return packageName.replace('@flamefrontend/sse-runtime-', '');
-}
-
-function getSidebarGroupId(title: string): string {
-  return title.toLowerCase().replaceAll(' ', '-');
 }
