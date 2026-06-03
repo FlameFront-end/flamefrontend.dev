@@ -454,11 +454,17 @@
   }
 
   .copyButton {
+    width: 2.75rem;
+    height: 2.75rem;
     margin-top: 0;
   }
 }
 
 @media (max-width: 390px) {
+  .windowFooter {
+    display: none;
+  }
+
   .footerList {
     grid-template-columns: 1fr;
   }

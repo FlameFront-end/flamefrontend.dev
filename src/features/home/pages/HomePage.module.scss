@@ -550,7 +550,7 @@
 
   .heroActions a {
     width: 100%;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
     padding-inline: var(--space-3);
     font-size: 0.875rem;
     text-align: center;
@@ -627,6 +627,16 @@
   .heroHeader h1 {
     max-width: 22rem;
     font-size: 1.875rem;
+  }
+
+  .heroBackdrop {
+    height: 18rem;
+    opacity: 0.16;
+  }
+
+  .hero::after {
+    height: 17rem;
+    background-size: 1.75rem 1.75rem;
   }
 
   .heroActions {

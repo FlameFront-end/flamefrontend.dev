@@ -101,8 +101,8 @@ export function SseRuntimeCaseStudyPage(): React.ReactElement {
             <tbody>
               {caseStudy.results.map((row) => (
                 <tr key={row.metric}>
-                  <td>{row.metric}</td>
-                  <td>{row.result}</td>
+                  <td data-label="Metric">{row.metric}</td>
+                  <td data-label="Result">{row.result}</td>
                 </tr>
               ))}
             </tbody>
