@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding-block: 1.25rem;
+  gap: var(--space-6);
+  padding-block: var(--space-5);
 }
 
 .brand {
@@ -21,7 +21,7 @@
 .navigation {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
   color: var(--color-text-secondary);
   font-size: 0.9375rem;
 }
@@ -46,4 +46,3 @@
     flex-wrap: wrap;
   }
 }
-
