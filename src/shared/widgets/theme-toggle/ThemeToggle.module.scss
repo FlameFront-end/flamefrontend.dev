@@ -1,0 +1,94 @@
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 1.875rem;
+  padding: 0;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 3.25rem;
+  height: 1.875rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 90%, transparent),
+      transparent
+    ),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.toggle:hover .track {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 100%, transparent),
+      transparent
+    ),
+    color-mix(in srgb, var(--color-surface) 88%, var(--color-text-primary) 12%);
+  border-color: color-mix(in srgb, var(--color-border-strong) 86%, var(--color-text-primary) 14%);
+}
+
+.thumb {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  display: grid;
+  place-items: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--color-background);
+  background: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.track[data-theme-state='dark'] .thumb {
+  transform: translateX(1.375rem);
+}
+
+.thumb svg {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  stroke-width: 2;
+}
+
+@media (max-width: 760px) {
+  .toggle,
+  .track {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .track {
+    border-radius: var(--radius-sm);
+  }
+
+  .thumb {
+    top: 50%;
+    left: 50%;
+    color: var(--color-text-primary);
+    background: transparent;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .track[data-theme-state='dark'] .thumb {
+    transform: translate(-50%, -50%);
+  }
+}

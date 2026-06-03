@@ -1,0 +1,20 @@
+@use '../../styles/mixins';
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  @include mixins.container;
+
+  flex: 1;
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+@media (max-width: 760px) {
+  .main {
+    padding-block: var(--space-4) var(--space-10);
+  }
+}

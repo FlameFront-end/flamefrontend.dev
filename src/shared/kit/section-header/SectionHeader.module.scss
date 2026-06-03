@@ -1,0 +1,21 @@
+.header {
+  display: grid;
+  gap: var(--space-4);
+  max-width: var(--container-narrow-width);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: var(--tracking-tighter);
+}
+
+.description {
+  margin: 0;
+  max-width: 44rem;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lead);
+  line-height: 1.6;
+}

@@ -1,0 +1,17 @@
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.name {
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+.purpose {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+}
