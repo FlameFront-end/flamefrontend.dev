@@ -1,0 +1,49 @@
+@use "../../styles/mixins";
+
+.shell {
+  min-height: 100vh;
+}
+
+.header {
+  @include mixins.container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.25rem;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.navigation a:hover {
+  color: var(--color-text-primary);
+}
+
+.main {
+  @include mixins.container;
+
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+@media (max-width: 720px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+  }
+}
+
