@@ -1,0 +1,21 @@
+@use "../../styles/mixins";
+
+.card {
+  @include mixins.card-surface;
+
+  display: grid;
+  gap: var(--space-3);
+  min-height: 9rem;
+  padding: var(--space-6);
+}
+
+.value {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: var(--line-height-tight);
+}
+
+.label {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+}
+
