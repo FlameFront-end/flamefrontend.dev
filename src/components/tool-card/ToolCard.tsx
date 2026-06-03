@@ -7,10 +7,12 @@ import styles from './ToolCard.module.scss';
 
 type ToolCardProps = {
   readonly tool: ToolSummary;
+  readonly linksLimit?: number;
 };
 
-export function ToolCard({ tool }: ToolCardProps): React.ReactElement {
+export function ToolCard({ linksLimit = 3, tool }: ToolCardProps): React.ReactElement {
   const statusTone = tool.status === 'available' ? 'accent' : 'muted';
+  const visibleLinks = tool.links?.slice(0, linksLimit);
 
   return (
     <Card className={styles.card}>
@@ -40,9 +42,9 @@ export function ToolCard({ tool }: ToolCardProps): React.ReactElement {
         </div>
       ) : null}
 
-      {tool.links?.length ? (
+      {visibleLinks?.length ? (
         <div className={styles.links}>
-          {tool.links.slice(0, 3).map((link, index) => (
+          {visibleLinks.map((link, index) => (
             <LinkButton
               href={link.href}
               key={link.href}
