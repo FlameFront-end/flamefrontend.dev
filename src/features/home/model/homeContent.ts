@@ -2,17 +2,16 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Activity,
   Boxes,
-  BriefcaseBusiness,
   Code,
   Gauge,
   GitBranch,
   Lock,
-  Mail,
   Package,
   RefreshCw,
   Route,
-  Send,
 } from 'lucide-react';
+import type { IconType } from 'react-icons';
+import { TbBrandGithub, TbBrandLinkedin, TbMail, TbSend } from 'react-icons/tb';
 
 import { contactLinks } from '@/shared/config/links';
 import type { Metric } from '@/shared/types/metric';
@@ -38,7 +37,7 @@ export type ContactAction = {
   readonly href: string;
   readonly label: string;
   readonly description: string;
-  readonly Icon: LucideIcon;
+  readonly Icon: IconType;
 };
 
 export const homeMetrics: readonly Metric[] = [
@@ -138,10 +137,10 @@ const contactDescriptions = {
 } as const;
 
 const contactIcons = {
-  GitHub: Code,
-  Telegram: Send,
-  LinkedIn: BriefcaseBusiness,
-  Email: Mail,
+  GitHub: TbBrandGithub,
+  Telegram: TbSend,
+  LinkedIn: TbBrandLinkedin,
+  Email: TbMail,
 } as const;
 
 const contactLabels = ['GitHub', 'Telegram', 'LinkedIn', 'Email'] as const;

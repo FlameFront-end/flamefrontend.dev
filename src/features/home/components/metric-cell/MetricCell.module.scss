@@ -1,0 +1,47 @@
+.cell {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-height: 8rem;
+  padding: clamp(var(--space-5), 2.8vw, var(--space-8));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 58%, transparent),
+      transparent 72%
+    ),
+    var(--color-background-soft);
+}
+
+.cell strong {
+  color: var(--color-text-primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell span {
+  max-width: 13rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 760px) {
+  .cell {
+    gap: var(--space-2);
+    min-height: auto;
+    padding: var(--space-4);
+  }
+
+  .cell strong {
+    font-size: 1.75rem;
+  }
+
+  .cell span {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+}

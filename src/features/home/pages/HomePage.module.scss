@@ -1,6 +1,6 @@
 .page {
   display: grid;
-  gap: clamp(4rem, 8vw, 7rem);
+  gap: clamp(3rem, 6vw, 5rem);
 }
 
 .page > * {
@@ -62,8 +62,7 @@
   text-align: center;
 }
 
-.heroEyebrow,
-.sectionKicker {
+.heroEyebrow {
   margin: 0;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
@@ -86,13 +85,13 @@
 }
 
 .heroHeader h1 {
-  max-width: 50rem;
+  max-width: 47rem;
   margin: 0;
   color: var(--color-text-primary);
-  font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+  font-size: clamp(2.375rem, 5vw, 3.875rem);
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.02;
+  line-height: 1.06;
 }
 
 .heroAccent {
@@ -108,11 +107,11 @@
 }
 
 .heroLead {
-  max-width: 45rem;
-  margin: var(--space-6) 0 0;
+  max-width: 42rem;
+  margin: var(--space-5) 0 0;
   color: var(--color-text-secondary);
-  font-size: clamp(1.0625rem, 1.9vw, 1.25rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.55vw, 1.125rem);
+  line-height: 1.6;
 }
 
 .heroActions {
@@ -120,7 +119,16 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-3);
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+.heroProof {
+  max-width: 34rem;
+  margin: var(--space-4) 0 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
 }
 
 .heroActions svg,
@@ -134,7 +142,7 @@
   width: min(100%, 68rem);
 }
 
-.metricStrip,
+.metricsSection,
 .flagshipSection,
 .capabilitySection,
 .migrationBand,
@@ -147,41 +155,51 @@
   box-shadow: 0 20px 72px -64px rgb(0 0 0 / 86%);
 }
 
-.metricStrip {
+.metricsSection {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
   gap: 1px;
 }
 
-.metric {
+.metricsHeader {
   display: grid;
   align-content: center;
   gap: var(--space-3);
-  min-height: 8rem;
-  padding: clamp(var(--space-5), 2.8vw, var(--space-8));
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
   background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-raised) 58%, transparent),
-      transparent 72%
+    radial-gradient(
+      68% 84% at 0% 0%,
+      color-mix(in srgb, var(--color-accent) 10%, transparent),
+      transparent 70%
     ),
     var(--color-background-soft);
 }
 
-.metric strong {
+.metricsHeader h2 {
+  max-width: 22rem;
+  margin: 0;
   color: var(--color-text-primary);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.25rem, 2.1vw, 1.75rem);
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
+  line-height: 1.12;
 }
 
-.metric span {
-  max-width: 13rem;
+.metricsHeader p {
+  max-width: 24rem;
+  margin: 0;
   color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.45;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.metricStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  min-width: 0;
+  background: var(--color-border);
 }
 
 .flagshipSection,
@@ -191,8 +209,8 @@
 
 .sectionIntro {
   display: grid;
-  gap: var(--space-4);
-  padding: clamp(1.75rem, 4vw, 3rem);
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
   background:
     linear-gradient(
       180deg,
@@ -206,24 +224,24 @@
 .migrationCopy h2,
 .roadmapHeader h2,
 .contactHeader h2 {
-  max-width: 48rem;
+  max-width: 38rem;
   margin: 0;
   color: var(--color-text-primary);
-  font-size: clamp(1.625rem, 2.9vw, 2.375rem);
+  font-size: clamp(1.375rem, 2.2vw, 1.875rem);
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.08;
+  line-height: 1.16;
 }
 
-.sectionIntro p:not(.sectionKicker),
-.migrationCopy p:not(.sectionKicker),
+.sectionIntro p,
+.migrationCopy p,
 .roadmapHeader p,
-.contactHeader p:not(.sectionKicker) {
-  max-width: 47rem;
+.contactHeader p {
+  max-width: 42rem;
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.6vw, 1.125rem);
-  line-height: 1.65;
+  font-size: clamp(0.9375rem, 1.3vw, 1rem);
+  line-height: 1.6;
 }
 
 .packageGrid,
@@ -240,81 +258,34 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.packageCard {
-  display: grid;
-  align-content: start;
-  gap: var(--space-4);
-  min-height: 13.5rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  background: var(--color-background-soft);
-  transition:
-    background-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
-}
-
-.packageCard:hover {
-  background: color-mix(in srgb, var(--color-surface-raised) 84%, var(--color-background-soft));
-}
-
-.packageIcon,
-.contactIcon {
-  display: inline-grid;
-  place-items: center;
-  width: 2.375rem;
-  height: 2.375rem;
-  color: var(--color-text-secondary);
-  background: color-mix(in srgb, var(--color-surface-raised) 72%, transparent);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-.packageIcon svg,
-.contactIcon svg {
-  width: 1rem;
-  height: 1rem;
-  stroke-width: 1.8;
-}
-
-.packageCard code {
-  min-width: 0;
-  color: var(--color-text-primary);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-
-.packageCard p {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
 .capabilityGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .migrationBand {
-  --migration-copy-background: var(--color-background-soft);
-
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 1px;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .migrationCopy {
   display: grid;
-  align-content: center;
+  align-content: start;
+  align-self: start;
   justify-items: start;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  max-width: 43rem;
   min-width: 0;
-  padding: clamp(1.75rem, 4vw, 3rem);
-  background: var(--migration-copy-background);
+  padding-block: 0;
 }
 
 .migrationCopy h2 {
-  max-width: 36rem;
+  max-width: none;
 }
 
 .migrationReport {
@@ -322,6 +293,10 @@
   align-content: start;
   min-width: 0;
   background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 18px 62px -54px rgb(0 0 0 / 76%);
 }
 
 .migrationReportHeader {
@@ -344,7 +319,7 @@
 
 .migrationEvidenceItem {
   display: grid;
-  grid-template-columns: minmax(8rem, 0.44fr) minmax(0, 0.56fr);
+  grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 0.72fr);
   gap: var(--space-2) var(--space-5);
   align-items: baseline;
   padding: clamp(var(--space-4), 2.4vw, var(--space-6));
@@ -428,112 +403,51 @@
 
 .roadmapHeader {
   display: grid;
-  gap: var(--space-4);
-  padding: clamp(1.75rem, 4vw, 3rem);
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .roadmapHeader h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
 }
 
 .plannedTools {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.plannedTool {
-  display: grid;
-  align-content: start;
-  gap: var(--space-4);
-  min-height: 10rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  background: var(--color-background-soft);
-}
-
-.plannedToolHeader {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-3);
-  align-items: start;
-}
-
-.plannedTool code {
-  min-width: 0;
-  color: var(--color-text-primary);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
-
-.plannedTool p {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.55;
-}
-
 .contactSection {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   gap: 1px;
+  overflow: hidden;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 72px -64px rgb(0 0 0 / 86%);
 }
 
 .contactHeader {
-  gap: var(--space-4);
-  padding: clamp(1.75rem, 4vw, 3rem);
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 0;
+  border-radius: 0;
 }
 
 .contactHeader h2 {
-  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
 }
 
 .contactGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 0;
-}
-
-.contactLink {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--space-4);
-  align-items: center;
-  min-width: 0;
-  min-height: 8rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  color: var(--color-text-primary);
-  background: var(--color-background-soft);
-  transition:
-    background-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
-}
-
-.contactLink:hover {
-  background: color-mix(in srgb, var(--color-surface-raised) 84%, var(--color-background-soft));
-}
-
-.contactContent {
-  display: grid;
-  gap: var(--space-1);
-  min-width: 0;
-}
-
-.contactContent strong {
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.contactContent span {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
 }
 
 @media (max-width: 1024px) {
   .page {
-    gap: clamp(3.25rem, 7vw, 5rem);
+    gap: clamp(2.75rem, 6vw, 4rem);
   }
 
   .hero {
@@ -548,6 +462,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .metricsSection,
   .packageGrid,
   .migrationBand,
   .systemSection,
@@ -559,8 +474,9 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .migrationReport {
-    border-top: 1px solid var(--color-border);
+  .metricsHeader h2,
+  .metricsHeader p {
+    max-width: none;
   }
 }
 
@@ -617,6 +533,12 @@
     line-height: 1.55;
   }
 
+  .heroProof {
+    max-width: 23rem;
+    margin-top: var(--space-3);
+    font-size: 0.75rem;
+  }
+
   .heroActions {
     display: grid;
     grid-template-columns: 1fr;
@@ -631,9 +553,11 @@
     min-height: 2.5rem;
     padding-inline: var(--space-3);
     font-size: 0.875rem;
-    white-space: nowrap;
+    text-align: center;
+    white-space: normal;
   }
 
+  .metricsSection,
   .metricStrip,
   .capabilityGrid,
   .packageGrid,
@@ -646,22 +570,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .metric {
-    gap: var(--space-2);
-    min-height: auto;
-    padding: var(--space-4);
-  }
-
-  .metric strong {
-    font-size: 1.75rem;
-  }
-
-  .metric span {
-    font-size: 0.8125rem;
-    line-height: 1.35;
-  }
-
   .sectionIntro,
+  .metricsHeader,
   .migrationCopy,
   .roadmapHeader,
   .contactHeader {
@@ -670,45 +580,23 @@
   }
 
   .sectionIntro h2,
+  .metricsHeader h2,
   .migrationCopy h2,
   .roadmapHeader h2,
   .contactHeader h2 {
     max-width: none;
-    font-size: 1.625rem;
-    line-height: 1.12;
+    font-size: 1.375rem;
+    line-height: 1.16;
   }
 
-  .sectionIntro p:not(.sectionKicker),
-  .migrationCopy p:not(.sectionKicker),
+  .sectionIntro p,
+  .metricsHeader p,
+  .migrationCopy p,
   .roadmapHeader p,
-  .contactHeader p:not(.sectionKicker) {
+  .contactHeader p {
     max-width: none;
     font-size: 0.9375rem;
     line-height: 1.55;
-  }
-
-  .packageCard {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: start;
-    gap: var(--space-2) var(--space-3);
-    min-height: auto;
-    padding: var(--space-5);
-  }
-
-  .packageIcon {
-    grid-row: 1;
-    width: 2rem;
-    height: 2rem;
-  }
-
-  .packageCard code {
-    grid-column: 2;
-    align-self: center;
-    font-size: 0.875rem;
-  }
-
-  .packageCard p {
-    grid-column: 2;
   }
 
   .migrationEvidenceItem {
@@ -728,21 +616,6 @@
   .principleList li {
     min-height: auto;
     padding: var(--space-4) var(--space-5);
-  }
-
-  .plannedTool,
-  .contactLink {
-    min-height: auto;
-    padding: var(--space-5);
-  }
-
-  .plannedToolHeader {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-  }
-
-  .contactLink {
-    gap: var(--space-3);
   }
 }
 

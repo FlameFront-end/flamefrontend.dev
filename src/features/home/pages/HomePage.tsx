@@ -1,6 +1,11 @@
-import { ArrowRight, ExternalLink, Package } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
+import { ContactLink } from '@/features/home/components/contact-link/ContactLink';
+import { MetricCell } from '@/features/home/components/metric-cell/MetricCell';
+import { PackageCard } from '@/features/home/components/package-card/PackageCard';
+import { PlannedToolCard } from '@/features/home/components/planned-tool-card/PlannedToolCard';
 import { RuntimeCapabilityCard } from '@/features/home/components/runtime-capability-card/RuntimeCapabilityCard';
+import { SectionIntro } from '@/features/home/components/section-intro/SectionIntro';
 import {
   contactActions,
   homeMetrics,
@@ -10,11 +15,9 @@ import {
 } from '@/features/home/model/homeContent';
 import { RuntimePreview } from '@/features/sse-runtime/components/runtime-preview/RuntimePreview';
 import { plannedTools, sseRuntime } from '@/features/sse-runtime/model/tools';
-import { GITHUB_PROFILE_URL } from '@/shared/config/links';
 import { ROUTES } from '@/shared/config/routes';
 import { Badge } from '@/shared/kit/badge/Badge';
 import { LinkButton } from '@/shared/kit/link-button/LinkButton';
-import type { Metric } from '@/shared/types/metric';
 
 import styles from './HomePage.module.scss';
 
@@ -33,27 +36,23 @@ export function HomePage(): React.ReactElement {
             <span className={styles.heroAccent}>React apps.</span>
           </h1>
           <p className={styles.heroLead}>
-            I extract the stream clients, reconnect logic, tab coordination and diagnostics teams
-            keep rebuilding into small TypeScript packages.
+            Build stable SSE connections without pushing retries, auth refresh, tab ownership and
+            stream diagnostics into React components.
           </p>
 
           <div className={styles.heroActions}>
-            <LinkButton className={styles.heroPrimaryAction} href={ROUTES.SSE_RUNTIME} variant="primary">
+            <LinkButton href={ROUTES.SSE_RUNTIME} variant="primary">
               View sse-runtime
               <ArrowRight aria-hidden="true" />
             </LinkButton>
-            <LinkButton
-              className={styles.heroSecondaryAction}
-              href={ROUTES.SSE_RUNTIME_CASE_STUDY}
-              variant="secondary"
-            >
+            <LinkButton href={ROUTES.SSE_RUNTIME_CASE_STUDY} variant="secondary">
               Read migration
             </LinkButton>
-            <LinkButton className={styles.heroGhostAction} href={GITHUB_PROFILE_URL} variant="ghost">
-              GitHub
-              <ExternalLink aria-hidden="true" />
-            </LinkButton>
           </div>
+
+          <p className={styles.heroProof}>
+            Extracted from a production migration, published as typed npm packages.
+          </p>
         </div>
 
         <div className={styles.heroPreview}>
@@ -61,50 +60,42 @@ export function HomePage(): React.ReactElement {
         </div>
       </section>
 
-      <section className={styles.metricStrip} aria-label="sse-runtime metrics">
-        {homeMetrics.map((metric) => (
-          <MetricCell metric={metric} key={`${metric.value}-${metric.label}`} />
-        ))}
+      <section className={styles.metricsSection} aria-labelledby="metrics-heading">
+        <SectionIntro
+          className={styles.metricsHeader}
+          id="metrics-heading"
+          title="Runtime evidence."
+          description="Migration notes, behavior tests and published package status."
+        />
+        <div className={styles.metricStrip} aria-label="sse-runtime metrics">
+          {homeMetrics.map((metric) => (
+            <MetricCell metric={metric} key={`${metric.value}-${metric.label}`} />
+          ))}
+        </div>
       </section>
 
       <section className={styles.flagshipSection} aria-labelledby="flagship-heading">
-        <div className={styles.sectionIntro}>
-          <p className={styles.sectionKicker}>Available now</p>
-          <h2 id="flagship-heading">sse-runtime turns SSE connection code into packages.</h2>
-          <p>
-            It packages the stream client, React hooks and DevTools panel that used to live inside
-            one commercial app, so new apps do not need to rebuild the same connection layer.
-          </p>
-        </div>
+        <SectionIntro
+          className={styles.sectionIntro}
+          id="flagship-heading"
+          title="SSE runtime, packaged."
+          description="It packages the stream client, React hooks and DevTools panel that used to live inside one commercial app, so new apps do not need to rebuild the same connection layer."
+        />
 
         <div className={styles.packageGrid} aria-label="sse-runtime packages">
           {packages.map((packageLink) => (
-            <a
-              className={styles.packageCard}
-              href={packageLink.href}
-              key={packageLink.name}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span className={styles.packageIcon} aria-hidden="true">
-                <Package />
-              </span>
-              <code>{packageLink.name}</code>
-              <p>{packageLink.purpose}</p>
-            </a>
+            <PackageCard packageLink={packageLink} key={packageLink.name} />
           ))}
         </div>
       </section>
 
       <section className={styles.capabilitySection} aria-labelledby="capabilities-heading">
-        <div className={styles.sectionIntro}>
-          <p className={styles.sectionKicker}>What it handles</p>
-          <h2 id="capabilities-heading">The streaming work that should not live in components.</h2>
-          <p>
-            Connection state, retries, auth headers, tab ownership and diagnostics stay outside the
-            UI, with typed events flowing into React.
-          </p>
-        </div>
+        <SectionIntro
+          className={styles.sectionIntro}
+          id="capabilities-heading"
+          title="Streaming logic belongs outside components."
+          description="Connection state, retries, auth headers, tab ownership and diagnostics stay outside the UI, with typed events flowing into React."
+        />
 
         <div className={styles.capabilityGrid}>
           {runtimeCapabilities.map((capability) => (
@@ -115,8 +106,7 @@ export function HomePage(): React.ReactElement {
 
       <section className={styles.migrationBand} aria-labelledby="migration-heading">
         <div className={styles.migrationCopy}>
-          <p className={styles.sectionKicker}>Migration story</p>
-          <h2 id="migration-heading">A real app got smaller after the runtime moved out.</h2>
+          <h2 id="migration-heading">A real app got smaller.</h2>
           <p>
             The case study walks through the extraction: what moved into packages, what stayed in
             the app and what became easier to test.
@@ -145,14 +135,12 @@ export function HomePage(): React.ReactElement {
 
       <section className={styles.systemSection} aria-labelledby="system-heading">
         <div className={styles.systemPanel}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.sectionKicker}>How I ship</p>
-            <h2 id="system-heading">A product hub for focused runtime packages.</h2>
-            <p>
-              Each tool starts from an operational problem in React apps, then gets documented with
-              package links, migration notes and clear status.
-            </p>
-          </div>
+          <SectionIntro
+            className={styles.sectionIntro}
+            id="system-heading"
+            title="Focused runtime packages."
+            description="Each tool starts from an operational problem in React apps, then gets documented with package links, migration notes and clear status."
+          />
 
           <ul className={styles.principleList}>
             {productPrinciples.map(({ Icon, text }) => (
@@ -165,73 +153,34 @@ export function HomePage(): React.ReactElement {
         </div>
 
         <div className={styles.roadmapPanel}>
-          <div className={styles.roadmapHeader}>
-            <p className={styles.sectionKicker}>Next tools</p>
-            <h2>Runtime packages still being shaped</h2>
-            <p>Ideas stay labeled as planned or in progress until there is code worth using.</p>
-          </div>
+          <SectionIntro
+            className={styles.roadmapHeader}
+            title="Packages still being shaped"
+            description="Ideas stay labeled as planned or in progress until there is code worth using."
+          />
 
           <div className={styles.plannedTools}>
             {plannedTools.map((tool) => (
-              <article className={styles.plannedTool} key={tool.slug}>
-                <div className={styles.plannedToolHeader}>
-                  <code>{tool.name}</code>
-                  <Badge tone="muted">{tool.statusLabel}</Badge>
-                </div>
-                <p>{tool.description}</p>
-              </article>
+              <PlannedToolCard tool={tool} key={tool.slug} />
             ))}
           </div>
         </div>
       </section>
 
       <section className={styles.contactSection} aria-labelledby="contact-heading">
-        <div className={styles.contactHeader}>
-          <p className={styles.sectionKicker}>Contact</p>
-          <h2 id="contact-heading">Need a frontend runtime pulled into shape?</h2>
-          <p>
-            Reach out about React architecture, SSE infrastructure, diagnostics tooling or
-            open-source collaboration.
-          </p>
-        </div>
+        <SectionIntro
+          className={styles.contactHeader}
+          id="contact-heading"
+          title="Need runtime help?"
+          description="Reach out about React architecture, SSE infrastructure, diagnostics tooling or open-source collaboration."
+        />
 
         <div className={styles.contactGrid}>
-          {contactActions.map(({ href, label, description, Icon }) => {
-            const isEmailLink = href.startsWith('mailto:');
-
-            return (
-              <a
-                className={styles.contactLink}
-                href={href}
-                key={label}
-                rel={isEmailLink ? undefined : 'noreferrer'}
-                target={isEmailLink ? undefined : '_blank'}
-              >
-                <span className={styles.contactIcon} aria-hidden="true">
-                  <Icon />
-                </span>
-                <span className={styles.contactContent}>
-                  <strong>{label}</strong>
-                  <span>{description}</span>
-                </span>
-              </a>
-            );
-          })}
+          {contactActions.map((action) => (
+            <ContactLink action={action} key={action.label} />
+          ))}
         </div>
       </section>
-    </div>
-  );
-}
-
-type MetricCellProps = {
-  readonly metric: Metric;
-};
-
-function MetricCell({ metric }: MetricCellProps): React.ReactElement {
-  return (
-    <div className={styles.metric}>
-      <strong>{metric.value}</strong>
-      <span>{metric.label}</span>
     </div>
   );
 }
