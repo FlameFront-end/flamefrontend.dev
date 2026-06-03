@@ -17,19 +17,19 @@ export const sseRuntime: ToolSummary = {
     {
       name: '@flamefrontend/sse-runtime-core',
       label: 'npm core',
-      purpose: 'Typed SSE client and lifecycle primitives',
+      purpose: 'Typed SSE client, connection lifecycle and reconnect primitives',
       href: SSE_RUNTIME_CORE_NPM_URL,
     },
     {
       name: '@flamefrontend/sse-runtime-react',
       label: 'npm react',
-      purpose: 'Provider and hooks for React apps',
+      purpose: 'React provider and hooks for subscribing to typed server events',
       href: SSE_RUNTIME_REACT_NPM_URL,
     },
     {
       name: '@flamefrontend/sse-runtime-devtools',
       label: 'npm devtools',
-      purpose: 'Runtime status and event inspector',
+      purpose: 'Floating inspector for connection state, events and runtime diagnostics',
       href: SSE_RUNTIME_DEVTOOLS_NPM_URL,
     },
   ],
