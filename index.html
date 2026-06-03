@@ -8,10 +8,16 @@
       content="Open-source React and TypeScript tools for real-time UI, SSE, developer tooling and frontend infrastructure."
     />
     <title>Artem Kaliganov - TypeScript Infrastructure Tools for React</title>
+    <script>
+      const flamefrontendTheme = localStorage.getItem('flamefrontend-theme');
+
+      if (flamefrontendTheme === 'dark' || flamefrontendTheme === 'light') {
+        document.documentElement.dataset.theme = flamefrontendTheme;
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

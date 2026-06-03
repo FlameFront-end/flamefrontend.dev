@@ -1,0 +1,41 @@
+@use "../../styles/mixins";
+
+.footer {
+  @include mixins.container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: var(--space-8);
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.credit {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: 0.9375rem;
+}
+
+.link {
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 720px) {
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
