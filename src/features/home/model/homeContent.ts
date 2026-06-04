@@ -1,14 +1,17 @@
 import type { LucideIcon } from 'lucide-react';
 import {
   Activity,
+  AppWindow,
   Boxes,
   Code,
+  Compass,
   Gauge,
   GitBranch,
   Lock,
   Package,
-  RefreshCw,
+  Radar,
   Route,
+  TestTube2,
 } from 'lucide-react';
 import type { IconType } from 'react-icons';
 import { TbBrandGithub, TbBrandLinkedin, TbMail, TbSend } from 'react-icons/tb';
@@ -42,89 +45,97 @@ export type ContactAction = {
 
 export const homeMetrics: readonly Metric[] = [
   {
-    value: '~3.5k',
-    label: 'application lines removed in migration',
+    value: '5+ years',
+    label: 'React and TypeScript product work across SaaS, ERP, fintech and internal tools.',
   },
   {
-    value: '229',
-    label: 'runtime behavior tests',
+    value: 'Real-time UI',
+    label: 'SSE streams, reconnect flows, stale state and browser coordination.',
   },
   {
-    value: '3',
-    label: 'published npm packages',
+    value: 'Open source',
+    label: 'Small packages extracted from problems I had to solve in real apps.',
   },
   {
-    value: '0',
-    label: 'dependencies in the core package',
+    value: 'Flagship',
+    label: 'sse-runtime is the first finished package family in this direction.',
   },
 ];
 
 export const runtimeCapabilities: readonly RuntimeCapability[] = [
   {
-    title: 'Typed event contracts',
-    description: 'Payload types flow from client setup into React hooks.',
+    title: 'Stream lifecycle',
+    description: 'Connection state, retries, resume and stale detection need one owner.',
     Icon: Code,
   },
   {
-    title: 'Reconnect and resume',
-    description: 'Backoff and Last-Event-ID resume are handled in one place.',
-    Icon: RefreshCw,
-  },
-  {
-    title: 'Auth header refresh',
-    description: 'Fresh headers are requested without pushing auth rules into UI code.',
-    Icon: Lock,
-  },
-  {
-    title: 'One stream across tabs',
-    description: 'Web Locks and BroadcastChannel prevent duplicate tab connections.',
+    title: 'Browser coordination',
+    description: 'Tabs, locks, broadcasts and ownership rules should stay explicit.',
     Icon: GitBranch,
   },
   {
-    title: 'Zero-dependency core',
-    description: 'The core client stays framework-agnostic and dependency-free.',
+    title: 'Auth at the boundary',
+    description: 'Token refresh and protected connections should not spread through UI code.',
+    Icon: Lock,
+  },
+  {
+    title: 'Inspectable runtime',
+    description: 'Hidden connection state is much easier to trust when it has a debug surface.',
+    Icon: Activity,
+  },
+  {
+    title: 'Narrow package APIs',
+    description: 'Core logic, React bindings and devtools stay separate by default.',
     Icon: Boxes,
   },
   {
-    title: 'Built-in diagnostics',
-    description: 'Stream health, reconnects, stale states and events are visible.',
-    Icon: Activity,
+    title: 'Real extraction',
+    description: 'A package starts with behavior that has already hurt inside an app.',
+    Icon: TestTube2,
   },
 ];
 
 export const migrationEvidence: readonly MigrationEvidence[] = [
   {
-    label: 'App cleanup',
-    value: '23 files',
-    description: 'Removed from the app after stream logic moved into packages.',
+    label: 'Start',
+    value: 'Real app pressure',
+    description: 'A repeated infrastructure problem starts taking over product code.',
   },
   {
-    label: 'React versions',
-    value: '18 / 19',
-    description: 'Provider and hooks tested against current React releases.',
+    label: 'Extract',
+    value: 'Runtime boundary',
+    description: 'The behavior moves behind a typed package API.',
   },
   {
-    label: 'Browser tabs',
-    value: 'Web Locks + BroadcastChannel',
-    description: 'Duplicate tabs share one stream instead of opening their own.',
+    label: 'Ship',
+    value: 'Tests and notes',
+    description: 'The package gets behavior tests, migration notes and clear release status.',
   },
 ];
 
 export const productPrinciples: readonly ProductPrinciple[] = [
   {
-    text: 'Typed contracts before component state',
-    Icon: Code,
+    text: 'Solve the behavior before shaping the API',
+    Icon: Radar,
   },
   {
-    text: 'Diagnostics where connections enter the app',
-    Icon: Gauge,
+    text: 'Keep runtime state out of component trees',
+    Icon: AppWindow,
   },
   {
-    text: 'Small packages with narrow responsibilities',
+    text: 'Prefer small packages over framework-heavy toolkits',
     Icon: Package,
   },
   {
-    text: 'Future tools labeled before release',
+    text: 'Label planned tools honestly',
+    Icon: Compass,
+  },
+  {
+    text: 'Treat diagnostics and tests as part of the feature',
+    Icon: Gauge,
+  },
+  {
+    text: 'Improve DX without hiding important behavior',
     Icon: Route,
   },
 ];

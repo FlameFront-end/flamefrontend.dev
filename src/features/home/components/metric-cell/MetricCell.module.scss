@@ -1,9 +1,9 @@
 .cell {
   display: grid;
   align-content: start;
-  gap: var(--space-3);
-  min-height: 8rem;
-  padding: clamp(var(--space-5), 2.8vw, var(--space-8));
+  gap: var(--space-2);
+  min-height: 7.5rem;
+  padding: clamp(var(--space-5), 2.4vw, var(--space-6));
   background:
     linear-gradient(
       180deg,
@@ -15,18 +15,18 @@
 
 .cell strong {
   color: var(--color-text-primary);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 1.14;
   font-variant-numeric: tabular-nums;
 }
 
 .cell span {
-  max-width: 13rem;
+  max-width: 19rem;
   color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.45;
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 760px) {
@@ -37,11 +37,11 @@
   }
 
   .cell strong {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 
   .cell span {
-    font-size: 0.8125rem;
-    line-height: 1.35;
+    font-size: 0.875rem;
+    line-height: 1.45;
   }
 }

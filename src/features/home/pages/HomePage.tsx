@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 
 import { ContactLink } from '@/features/home/components/contact-link/ContactLink';
+import { FlagshipProject } from '@/features/home/components/flagship-project/FlagshipProject';
 import { MetricCell } from '@/features/home/components/metric-cell/MetricCell';
-import { PackageCard } from '@/features/home/components/package-card/PackageCard';
 import { PlannedToolCard } from '@/features/home/components/planned-tool-card/PlannedToolCard';
 import { RuntimeCapabilityCard } from '@/features/home/components/runtime-capability-card/RuntimeCapabilityCard';
 import { SectionIntro } from '@/features/home/components/section-intro/SectionIntro';
@@ -13,8 +13,7 @@ import {
   productPrinciples,
   runtimeCapabilities,
 } from '@/features/home/model/homeContent';
-import { RuntimePreview } from '@/features/sse-runtime/components/runtime-preview/RuntimePreview';
-import { plannedTools, sseRuntime } from '@/features/sse-runtime/model/tools';
+import { plannedTools } from '@/features/sse-runtime/model/tools';
 import { ROUTES } from '@/shared/config/routes';
 import { Badge } from '@/shared/kit/badge/Badge';
 import { LinkButton } from '@/shared/kit/link-button/LinkButton';
@@ -22,41 +21,63 @@ import { LinkButton } from '@/shared/kit/link-button/LinkButton';
 import styles from './HomePage.module.scss';
 
 export function HomePage(): React.ReactElement {
-  const packages = sseRuntime.packages ?? [];
-
   return (
     <div className={styles.page}>
       <section className={styles.hero} aria-labelledby="home-hero-title">
         <div className={styles.heroBackdrop} aria-hidden="true" />
 
         <div className={styles.heroHeader}>
-          <p className={styles.heroEyebrow}>Real-time React infrastructure</p>
+          <p className={styles.heroEyebrow}>Frontend infrastructure and open source</p>
           <h1 id="home-hero-title">
-            Open-source runtime tools for real-time{' '}
-            <span className={styles.heroAccent}>React apps.</span>
+            I turn real frontend infrastructure work into{' '}
+            <span className={styles.heroAccent}>developer tools.</span>
           </h1>
           <p className={styles.heroLead}>
-            Build stable SSE connections without pushing retries, auth refresh, tab ownership and
-            stream diagnostics into React components.
+            Senior frontend developer working with React, TypeScript, real-time interfaces and small
+            open-source packages for problems that do not belong in product components.
           </p>
 
           <div className={styles.heroActions}>
-            <LinkButton href={ROUTES.SSE_RUNTIME} variant="primary">
-              View sse-runtime
+            <LinkButton href={ROUTES.TOOLS} variant="primary">
+              Explore tools
               <ArrowRight aria-hidden="true" />
             </LinkButton>
-            <LinkButton href={ROUTES.SSE_RUNTIME_CASE_STUDY} variant="secondary">
-              Read migration
+            <LinkButton href={ROUTES.SSE_RUNTIME} variant="secondary">
+              View sse-runtime
             </LinkButton>
           </div>
 
           <p className={styles.heroProof}>
-            Extracted from a production migration, published as typed npm packages.
+            Current flagship: sse-runtime, a typed SSE runtime family extracted from a real app
+            migration.
           </p>
         </div>
 
         <div className={styles.heroPreview}>
-          <RuntimePreview />
+          <div className={styles.heroSignal} aria-label="Engineering focus map">
+            <div className={styles.signalHeader}>
+              <span>flamefrontend.dev</span>
+              <Badge tone="muted">tooling lab</Badge>
+            </div>
+
+            <div className={styles.signalGrid}>
+              <article>
+                <span>01</span>
+                <h2>Real-time UI</h2>
+                <p>Streams, reconnects, stale states and typed server events.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h2>Runtime layers</h2>
+                <p>Connection and browser behavior pulled out of hooks and screens.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h2>Developer diagnostics</h2>
+                <p>Debug views for network, browser and runtime state that is usually hidden.</p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -64,37 +85,24 @@ export function HomePage(): React.ReactElement {
         <SectionIntro
           className={styles.metricsHeader}
           id="metrics-heading"
-          title="Runtime evidence."
-          description="Migration notes, behavior tests and published package status."
+          title="The work sits between product UI and frontend infrastructure."
+          description="This site collects the tools, notes and migration stories behind that work."
         />
-        <div className={styles.metricStrip} aria-label="sse-runtime metrics">
+        <div className={styles.metricStrip} aria-label="engineering profile metrics">
           {homeMetrics.map((metric) => (
             <MetricCell metric={metric} key={`${metric.value}-${metric.label}`} />
           ))}
         </div>
       </section>
 
-      <section className={styles.flagshipSection} aria-labelledby="flagship-heading">
-        <SectionIntro
-          className={styles.sectionIntro}
-          id="flagship-heading"
-          title="SSE runtime, packaged."
-          description="It packages the stream client, React hooks and DevTools panel that used to live inside one commercial app, so new apps do not need to rebuild the same connection layer."
-        />
-
-        <div className={styles.packageGrid} aria-label="sse-runtime packages">
-          {packages.map((packageLink) => (
-            <PackageCard packageLink={packageLink} key={packageLink.name} />
-          ))}
-        </div>
-      </section>
+      <FlagshipProject />
 
       <section className={styles.capabilitySection} aria-labelledby="capabilities-heading">
         <SectionIntro
           className={styles.sectionIntro}
           id="capabilities-heading"
-          title="Streaming logic belongs outside components."
-          description="Connection state, retries, auth headers, tab ownership and diagnostics stay outside the UI, with typed events flowing into React."
+          title="The same problems show up in different apps."
+          description="The common thread is infrastructure that often leaks into components, effects and local helpers."
         />
 
         <div className={styles.capabilityGrid}>
@@ -106,21 +114,24 @@ export function HomePage(): React.ReactElement {
 
       <section className={styles.migrationBand} aria-labelledby="migration-heading">
         <div className={styles.migrationCopy}>
-          <h2 id="migration-heading">A real app got smaller.</h2>
+          <div className={styles.migrationCopyHeader}>
+            <h2 id="migration-heading">How a package earns its page.</h2>
+            <LinkButton href={ROUTES.SSE_RUNTIME_CASE_STUDY} variant="secondary">
+              See the first extraction
+              <ArrowRight aria-hidden="true" />
+            </LinkButton>
+          </div>
           <p>
-            The case study walks through the extraction: what moved into packages, what stayed in
-            the app and what became easier to test.
+            Speculative package names are cheap. A tool belongs here only after it solves a real app
+            problem, has a small API and comes with enough tests and notes for another developer to
+            judge it.
           </p>
-          <LinkButton href={ROUTES.SSE_RUNTIME_CASE_STUDY} variant="secondary">
-            Read the migration
-            <ArrowRight aria-hidden="true" />
-          </LinkButton>
         </div>
 
-        <div className={styles.migrationReport} aria-label="Migration evidence">
+        <div className={styles.migrationReport} aria-label="Package extraction model">
           <div className={styles.migrationReportHeader}>
-            <span>Migration snapshot</span>
-            <Badge tone="muted">Real app</Badge>
+            <span>Package model</span>
+            <Badge tone="muted">Production first</Badge>
           </div>
 
           {migrationEvidence.map((item) => (
@@ -138,8 +149,8 @@ export function HomePage(): React.ReactElement {
           <SectionIntro
             className={styles.sectionIntro}
             id="system-heading"
-            title="Focused runtime packages."
-            description="Each tool starts from an operational problem in React apps, then gets documented with package links, migration notes and clear status."
+            title="What stays consistent across projects."
+            description="Small boundaries, explicit runtime state, typed contracts and diagnostics that make behavior easier to reason about."
           />
 
           <ul className={styles.principleList}>
@@ -155,8 +166,8 @@ export function HomePage(): React.ReactElement {
         <div className={styles.roadmapPanel}>
           <SectionIntro
             className={styles.roadmapHeader}
-            title="Packages still being shaped"
-            description="Ideas stay labeled as planned or in progress until there is code worth using."
+            title="The runtime family is growing"
+            description="Future tools stay marked as planned or in progress until there is code, documentation and enough confidence to use them."
           />
 
           <div className={styles.plannedTools}>
@@ -171,8 +182,8 @@ export function HomePage(): React.ReactElement {
         <SectionIntro
           className={styles.contactHeader}
           id="contact-heading"
-          title="Need runtime help?"
-          description="Reach out about React architecture, SSE infrastructure, diagnostics tooling or open-source collaboration."
+          title="Work, collaboration and source code."
+          description="Reach out about React architecture, real-time UI, frontend infrastructure, developer tooling or open-source collaboration."
         />
 
         <div className={styles.contactGrid}>
