@@ -6,6 +6,7 @@ import { MetricCell } from '@/features/home/components/metric-cell/MetricCell';
 import { PlannedToolCard } from '@/features/home/components/planned-tool-card/PlannedToolCard';
 import { RuntimeCapabilityCard } from '@/features/home/components/runtime-capability-card/RuntimeCapabilityCard';
 import { SectionIntro } from '@/features/home/components/section-intro/SectionIntro';
+import { SquaresBackground } from '@/features/home/components/squares-background/SquaresBackground';
 import {
   contactActions,
   homeMetrics,
@@ -25,6 +26,17 @@ export function HomePage(): React.ReactElement {
     <div className={styles.page}>
       <section className={styles.hero} aria-labelledby="home-hero-title">
         <div className={styles.heroBackdrop} aria-hidden="true" />
+        <SquaresBackground
+          borderColor="rgba(255, 255, 255, 0.075)"
+          className={styles.heroActivity}
+          speed={0.11}
+          squareSize={56}
+        />
+        <div className={styles.heroMarkers} aria-hidden="true">
+          <span className={`${styles.heroMarker} ${styles.connectedMarker}`}>connected</span>
+          <span className={`${styles.heroMarker} ${styles.typedMarker}`}>typed</span>
+          <span className={`${styles.heroMarker} ${styles.recoveredMarker}`}>recovered</span>
+        </div>
 
         <div className={styles.heroHeader}>
           <p className={styles.heroEyebrow}>Frontend infrastructure and open source</p>
@@ -33,8 +45,8 @@ export function HomePage(): React.ReactElement {
             <span className={styles.heroAccent}>developer tools.</span>
           </h1>
           <p className={styles.heroLead}>
-            Senior frontend developer working with React, TypeScript, real-time interfaces and small
-            open-source packages for problems that do not belong in product components.
+            I build React and TypeScript infrastructure for real-time interfaces, then extract the
+            reusable parts into small open-source tools.
           </p>
 
           <div className={styles.heroActions}>
@@ -46,11 +58,6 @@ export function HomePage(): React.ReactElement {
               View sse-runtime
             </LinkButton>
           </div>
-
-          <p className={styles.heroProof}>
-            Current flagship: sse-runtime, a typed SSE runtime family extracted from a real app
-            migration.
-          </p>
         </div>
 
         <div className={styles.heroPreview}>

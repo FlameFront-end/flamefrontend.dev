@@ -24,42 +24,106 @@
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--color-background) 4%, transparent),
-      var(--color-background) 88%
+      color-mix(in srgb, var(--color-background) 12%, transparent),
+      var(--color-background) 86%
     ),
-    conic-gradient(
-      from 226deg at 50% 8%,
-      #007cf0,
-      #00dfd8,
-      #7928ca,
-      #ff0080,
-      #ff4d4d,
-      #f9cb28,
-      #007cf0
+    radial-gradient(
+      70% 42% at 50% 0%,
+      color-mix(in srgb, var(--color-text-primary) 9%, transparent),
+      transparent 72%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 5.75rem,
+      color-mix(in srgb, var(--color-text-primary) 7%, transparent) 5.75rem 5.8125rem
     );
-  opacity: 0.28;
+  opacity: 0.38;
   mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
 }
 
-.hero::after {
+.heroActivity {
   position: absolute;
   inset: clamp(1rem, 3vw, 2rem) 0 auto;
-  z-index: -1;
-  height: clamp(28rem, 52vw, 38rem);
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-position: center top;
-  background-size: 3rem 3rem;
-  mask-image: linear-gradient(180deg, rgb(0 0 0 / 62%), transparent 78%);
-  content: '';
+  z-index: 0;
+  height: clamp(24rem, 49vw, 36rem);
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  contain: paint;
+  pointer-events: none;
+  opacity: 0.58;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 72%, transparent 100%);
+}
+
+.hero::after {
+  content: none;
 }
 
 .heroHeader {
+  position: relative;
+  z-index: 1;
   display: grid;
   justify-items: center;
   width: min(100%, 58rem);
   text-align: center;
+}
+
+.heroMarkers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heroMarker {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8125rem;
+  padding: 0 var(--space-3);
+  color: color-mix(in srgb, var(--color-text-muted) 70%, transparent);
+  background: color-mix(in srgb, var(--color-background-soft) 52%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-text-primary) 9%, transparent);
+  border-radius: var(--radius-xs);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 42px -34px rgb(0 0 0 / 88%);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.heroMarker::before {
+  width: 0.3125rem;
+  height: 0.3125rem;
+  margin-right: var(--space-2);
+  background: currentColor;
+  border-radius: var(--radius-pill);
+  content: '';
+  opacity: 0.72;
+}
+
+.connectedMarker {
+  top: clamp(9rem, 16vw, 13rem);
+  left: max(7%, calc(50% - 38rem));
+  color: color-mix(in srgb, var(--color-text-primary) 78%, transparent);
+}
+
+.typedMarker {
+  top: clamp(5.75rem, 8.5vw, 7.75rem);
+  right: max(18%, calc(50% - 24rem));
+  opacity: 0.7;
+  transform: translate(50%, -50%);
+}
+
+.recoveredMarker {
+  top: clamp(24rem, 38vw, 29rem);
+  right: max(11%, calc(50% - 30rem));
+  color: color-mix(in srgb, var(--color-text-muted) 78%, transparent);
+  transform: translate(50%, -50%);
 }
 
 .heroEyebrow {
@@ -97,13 +161,23 @@
 .heroAccent {
   display: inline-block;
   color: transparent;
-  background-image: linear-gradient(110deg, #dfe8ff 0%, #7aa2ff 48%, #b9a7ff 100%);
+  background-image: linear-gradient(
+    110deg,
+    var(--color-text-primary) 0%,
+    color-mix(in srgb, var(--color-text-primary) 58%, var(--color-text-muted)) 52%,
+    var(--color-text-secondary) 100%
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 :global([data-theme='light']) .heroAccent {
-  background-image: linear-gradient(110deg, #1e3a8a 0%, #2563eb 54%, #6d46d9 100%);
+  background-image: linear-gradient(
+    110deg,
+    var(--color-text-primary) 0%,
+    color-mix(in srgb, var(--color-text-primary) 72%, var(--color-text-muted)) 52%,
+    var(--color-text-secondary) 100%
+  );
 }
 
 .heroLead {
@@ -122,15 +196,6 @@
   margin-top: var(--space-6);
 }
 
-.heroProof {
-  max-width: 34rem;
-  margin: var(--space-4) 0 0;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  line-height: 1.55;
-}
-
 .heroActions svg,
 .migrationCopy svg {
   width: 1rem;
@@ -139,6 +204,8 @@
 }
 
 .heroPreview {
+  position: relative;
+  z-index: 1;
   width: min(100%, 68rem);
 }
 
@@ -598,8 +665,17 @@
   }
 
   .heroHeader {
+    order: 0;
     justify-items: center;
     text-align: center;
+  }
+
+  .heroMarkers {
+    display: none;
+  }
+
+  .heroPreview {
+    order: 1;
   }
 
   .heroEyebrow {
@@ -624,12 +700,6 @@
     margin-top: var(--space-4);
     font-size: 1rem;
     line-height: 1.55;
-  }
-
-  .heroProof {
-    max-width: 23rem;
-    margin-top: var(--space-3);
-    font-size: 0.75rem;
   }
 
   .heroActions {
