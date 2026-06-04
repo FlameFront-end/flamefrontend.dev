@@ -509,7 +509,7 @@
 .systemSection {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: clamp(var(--space-5), 3vw, var(--space-7));
+  gap: 0;
   overflow: visible;
   background: transparent;
   border: 0;
@@ -530,8 +530,16 @@
 .roadmapPanel {
   overflow: hidden;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: 0 20px 72px -64px rgb(0 0 0 / 86%);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.systemPanel {
+  border-right: 0;
+}
+
+.roadmapPanel {
+  border-left: 1px solid var(--color-border);
 }
 
 .systemPanel .sectionIntro {
@@ -632,6 +640,16 @@
   .systemSection,
   .contactSection {
     grid-template-columns: 1fr;
+  }
+
+  .systemPanel {
+    border-right: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .roadmapPanel {
+    border-left: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
   }
 
   .metricsHeader h2,
