@@ -1,17 +1,14 @@
-.grid {
+.page {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-4);
+  gap: clamp(3rem, 5.5vw, 4.75rem);
 }
 
-.card {
-  display: grid;
-  align-content: start;
-  gap: var(--space-6);
+.page > * {
+  min-width: 0;
 }
 
-@media (max-width: 780px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (max-width: 760px) {
+  .page {
+    gap: var(--space-10);
   }
 }

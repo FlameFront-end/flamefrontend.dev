@@ -1,0 +1,37 @@
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-height: 13rem;
+  padding: clamp(var(--space-6), 3vw, var(--space-8));
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.card strong {
+  color: var(--color-text-primary);
+  font-size: clamp(1.625rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+.card span {
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    min-height: auto;
+  }
+}

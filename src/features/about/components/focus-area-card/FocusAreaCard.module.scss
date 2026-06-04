@@ -1,0 +1,56 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: var(--space-2) var(--space-5);
+  align-items: start;
+  min-width: 0;
+  min-height: 8rem;
+  padding: clamp(var(--space-6), 3vw, var(--space-8));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-surface-raised) 76%, transparent),
+    var(--color-background-soft) 78%
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.card span {
+  grid-row: span 2;
+  color: color-mix(in srgb, var(--color-text-primary) 38%, transparent);
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.card h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.card p {
+  grid-column: 2;
+  max-width: 36rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-5);
+  }
+
+  .card p {
+    grid-column: auto;
+  }
+}

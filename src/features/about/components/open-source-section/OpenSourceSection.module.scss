@@ -1,0 +1,55 @@
+.section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.44fr);
+  gap: clamp(var(--space-6), 4vw, var(--space-10));
+  align-items: stretch;
+  padding: clamp(var(--space-5), 4vw, var(--space-10));
+  overflow: hidden;
+  background:
+    radial-gradient(
+      42rem 20rem at 8% 0%,
+      color-mix(in srgb, var(--color-accent) 13%, transparent),
+      transparent 68%
+    ),
+    var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.copy {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.copy h2 {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 2.7vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.copy p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.9375rem, 1.3vw, 1rem);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: var(--space-5);
+  }
+}
